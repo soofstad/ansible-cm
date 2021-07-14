@@ -1,0 +1,13 @@
+---
+- hosts: all
+  remote_user: root
+
+  tasks:
+
+  - name: Deploy nginx config
+    ansible.builtin.copy:
+      src: testfile.txt
+      dest: /etc/ansible/testfile.txt
+      owner: root
+      group: root
+      mode: '0644'
