@@ -1,6 +1,7 @@
 ---
-- hosts: [lxbm]
-  remote_user: root
+- hosts: lxbm
+  roles:
+  - nginx: "{{clone_dir}}/roles/nginx"
 
   tasks:
   - name: Install nginx
