@@ -16,7 +16,7 @@
 
   - name: Deploy nginx config
     ansible.builtin.copy:
-      src: testfile.txt
+      src: "{{clone_dir}}/common/files/testfile.txt"
       dest: /etc/ansible/testfile.txttxt
       owner: root
       group: root

@@ -5,6 +5,7 @@
   vars:
     branch: master
     logfile: /var/log/ansible-pull.log
+    
 
   tasks:
 
@@ -17,7 +18,7 @@
         ansible-pull
         --only-if-changed
         --checkout {{branch}}
-        --directory /etc/ansible/ansible-cm
+        --directory {{clone_dir}}
         --inventory-file "$(hostname --short),"
         --url https://github.com/soofstad/ansible-cm > {{logfile}} 2>&1
       cron_file: /etc/crontab
