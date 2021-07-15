@@ -19,6 +19,6 @@
         --checkout {{branch}}
         --directory /etc/ansible/ansible-cm
         --inventory-file "$(hostname --short),"
-        --url https://github.com/soofstad/ansible-cm >> {{logfile}} 2>&1
+        --url https://github.com/soofstad/ansible-cm > {{logfile}} 2>&1
       cron_file: /etc/crontab
       user: root

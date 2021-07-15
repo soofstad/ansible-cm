@@ -2,3 +2,4 @@
 
 - import_playbook: pull-schedule.yml
 - import_playbook: nginx.yml
+- import_playbook: update-reboot.yml
