@@ -1,10 +1,9 @@
 - hosts: all
 
   tasks:
-
-  - name: Set facts
-    set_fact:
-          clone_dir: /etc/ansible/ansible-cm
+    - name: Set facts
+      set_fact:
+            clone_dir: /etc/ansible/ansible-cm
 
 - import_playbook: common/pull-schedule.yml
 - import_playbook: common/update-reboot.yml
