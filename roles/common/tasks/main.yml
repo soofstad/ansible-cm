@@ -7,7 +7,6 @@
     # Looks for a file named '$hostname'.yml in the project root dir
     job: >
       ansible-pull
-      --only-if-changed
       --checkout {{branch}}
       --directory {{clone_dir}}
       --inventory-file "$(hostname --short),"

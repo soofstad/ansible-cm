@@ -14,4 +14,4 @@
       owner: root
       group: root
       mode: '0644'
-    notify: Restart Nginx
+    notify: Restart Nginx  # Depends on the handler defined in the nginx role

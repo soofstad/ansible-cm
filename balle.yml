@@ -1,9 +1,0 @@
----
-- hosts: balle
-  remote_user: root
-  tasks:
-
-  - name: Remove file
-    ansible.builtin.file:
-      state: absent
-      path: /etc/ansible/testfile.txttxt

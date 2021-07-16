@@ -1,0 +1,12 @@
+---
+- name: Playbook for the 'another' node
+  hosts: another
+  roles:
+    - common
+
+  tasks:
+
+  - name: Remove file
+    ansible.builtin.file:
+      state: absent
+      path: /etc/ansible/testfile.txt
