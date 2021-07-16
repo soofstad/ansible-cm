@@ -9,9 +9,12 @@
   tasks:
   - name: Deploy nginx config
     ansible.builtin.copy:
-      src: files/testfile.txt
-      dest: /etc/ansible/testfile.txt
+      src: "{{item}}"
+      dest: /etc/ansible/a_folder
       owner: root
       group: root
       mode: '0644'
     notify: Restart Nginx  # Depends on the handler defined in the nginx role
+    loop:
+      - files/test_folder
+      - files/testfile.txt
