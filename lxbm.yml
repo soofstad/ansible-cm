@@ -10,11 +10,12 @@
   - name: Deploy nginx config
     ansible.builtin.copy:
       src: "{{item}}"
-      dest: /etc/ansible/a_folder
+      dest: /etc/nginx
       owner: root
       group: root
       mode: '0644'
     notify: Restart Nginx  # Depends on the handler defined in the nginx role
     loop:
-      - files/test_folder
-      - files/testfile.txt
+      - files/lxbm-nginx-conf/common
+      - files/lxbm-nginx-conf/sites-enabled
+      - files/lxbm-nginx-conf/nginx.conf
