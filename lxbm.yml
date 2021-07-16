@@ -1,32 +1,17 @@
-- hosts: lxbm
+---
+- name: Playbook for the lxbm node
+  hosts: lxbm
 
-  # roles:
-  # - nginx: "{{clone_dir}}/roles/nginx"
+  roles:
+    - common
+    - nginx
 
   tasks:
-  # - name: Install nginx
-  #   ansible.builtin.package:
-  #     name: htop
-  #     state: present
-
-  # - name: Enable and start nginx.service
-    # ansible.builtin.service:
-    #   name: nginx
-    #   enabled: yes
-    #   state: started
   - name: Deploy nginx config
     ansible.builtin.copy:
       src: files/testfile.txt
-      dest: /etc/ansible/testfile.txttxt
+      dest: /etc/ansible/testfile.txt
       owner: root
       group: root
       mode: '0644'
     notify: Restart Nginx
-
-
-  # handlers:
-  # - name: Restart Nginx
-  #   service:
-  #     name: nginx
-  #     state: restarted
-- import_playbook: nginx.yml

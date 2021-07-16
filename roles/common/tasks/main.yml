@@ -1,0 +1,40 @@
+---
+- name: Ansible-pull.
+  ansible.builtin.cron:
+    name: 'Ansible-pull'
+    minute: '32'
+    hour: '7-20'
+    # Looks for a file named '$hostname'.yml in the project root dir
+    job: >
+      ansible-pull
+      --only-if-changed
+      --checkout {{branch}}
+      --directory {{clone_dir}}
+      --inventory-file "$(hostname --short),"
+      --url https://github.com/soofstad/ansible-cm
+      "$(hostname --short).yml"
+      > {{logfile}} 2>&1
+    cron_file: /etc/crontab
+    user: root
+
+- name: Upgrade all packages (Debian)
+  apt:
+    name: '*'
+    state: latest
+  when: ansible_facts['os_family'] == "Debian"
+
+- name: Upgrade all packages (Red Hat)
+  yum:
+    name: '*'
+    state: latest
+  when: ansible_facts['os_family'] == "RedHat"
+
+- name: Reboot every month
+  ansible.builtin.cron:
+    name: 'Reboot'
+    minute: '12'
+    hour: '02'
+    day: '2'
+    job: systemctl reboot
+    cron_file: /etc/crontab
+    user: root

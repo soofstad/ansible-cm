@@ -1,0 +1,4 @@
+---
+branch: master
+logfile: /var/log/ansible-pull.log
+clone_dir: /etc/ansible/ansible-cm
